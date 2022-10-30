@@ -1,0 +1,11 @@
+body{
+    margin-top: 100px;
+    background-color:azure;
+    background-size: cover;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    
+}
+
