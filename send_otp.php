@@ -1,16 +1,16 @@
 
 <?php
 session_start();
-$con=mysqli_connect('localhost','root','','login');
-$email=$_POST['email'];
-$res= mysqli_query( $con,"select * from user where email='$email'");
-$count=mysqli_num_rows($res);
+$con=mysqli_connect('localhost','root','','login');//Connect to Database where username='root',password='',and database='login'
+$email=$_POST['email'];//Fetching data from email field
+$res= mysqli_query( $con,"select * from user where email='$email'");//fetching data from table(user) where email='kahkashan25599@gmail.com'
+$count=mysqli_num_rows($res);//count row
 if($count>0){
-    $otp=rand(111111,999999);
-    mysqli_query($con,"update user set otp='$otp' where email='$email'");
+    $otp=rand(111111,999999);//generate random 6 digits number
+    mysqli_query($con,"update user set otp='$otp' where email='$email'");//update table with random OTP where email
     $html="your OTP verification code is ".$otp;
 	$_SESSION['EMAIL']=$email;
-    smtp_mailer($email,'OTP verification',$html);
+    smtp_mailer($email,'OTP verification',$html);//use of SMTP mail
 
     echo 1;
 }
